@@ -56,6 +56,12 @@ def main(ctx: click.Context, config: str):
             err=True,
         )
         click.secho(pformat(diff, indent=2), fg="red", err=True)
+        click.echo(err=True)
+        command = click.style(
+            "PYTHONPATH=. alembic revision --autogenerate -m 'Your message'",
+            bold=True,
+        )
+        click.echo(f"You may need to run `{command}`.", err=True)
         ctx.exit(1)
     else:
         click.secho("INFO: Migrations in sync.", fg="green", err=True)
