@@ -7,7 +7,7 @@ from alembic.command import revision
 from alembic.config import Config
 from alembic.operations.ops import MigrationScript
 
-__version__ = "1.0.0"
+__version__ = "1.1.1"
 
 
 def simulate_autogenerate(config_path: str) -> t.List[tuple]:
