@@ -8,3 +8,18 @@ jobs:
   - { python: '3.6', env: TOXENV=lint }
   - { python: '3.6', env: TOXENV=py36 }
   - { python: '3.7', env: TOXENV=py37 }
+
+  - stage: PyPI Release
+    if: tag IS present
+    python: "3.7"
+    env: []
+    install: skip
+    script: skip
+    deploy:
+      provider: pypi
+      user: sloria
+      on:
+        tags: true
+      distributions: sdist bdist_wheel
+      password:
+        secure: "RyB0K8dtEY9LR3MnfCCkuIKWI4Ti8LzL29vELyrtMk9IjtOgHISV60oZDZkBmzogdMOVnVyjGXhIRX7uziF8LuAv4j+kaoy8rhYkabHfbiZcWLoRknqoQPnNtacnFwODMCp17VeqyEqyG5rjZdOrp7OrqA5E3NBHSHOV6qZ5Tgf+lRkaWst/JCv+FuqmZLZLnMnvqhoWC37JkzQRkB5ASk+3tGzrnt+nZ2dM9lkiwCHgm9Dhp2BqZhLcTQgB/U3BNwajfeuQdt23w/lreMazvJF3tVebQglB9KP1Kcf/9UBtmIlzQplqW2pGF1hnSfcRN52Ke2SKyJv/j543IvNnPXWyDSgcPKU77SN6u0zHNE4WGRXiU8yrFalvY4hBauPHNjIJQAWnlNSUhueRd5XGfKUwpnDRIAIga01kIT3yVwXRfcp5UiLqdKd66xgcuOf9Bq+7AkvOGwoT5yReEYFUWRC+WQw0sDnbBOYtDRWgyzUqHGQS0wg1ZJJWXEdz7vQvwSWapuFwBpoDZDOeytRkbjVfaw2xr5VfsbSzcViyABq8fAwjwX9uJnbmRDHtg7ckRJZ0BGSe8qSadQTnb7I0l0jT4FmQ+iMJZRpj6bs2/gQ3x9czxvJams/Gw3YHTk/zxLIfEJuPYR2eeZGEHteuHQKNDxtRT+Cz+CKvU+oeljE="
