@@ -39,7 +39,7 @@ def read(fname):
 setup(
     name="alembic-autogen-check",
     version=find_version("alembic_autogen_check.py"),
-    description="CLI to check with alembic migrations are in sync with your SQLAlchemy models.",
+    description="CLI to check if alembic migrations are in sync with your SQLAlchemy models.",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
     author="4Catalyzer",
