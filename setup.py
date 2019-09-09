@@ -5,7 +5,7 @@ from setuptools import setup
 INSTALL_REQUIRES = ["alembic", "click>=7.0"]
 EXTRAS_REQUIRE = {
     "tests": ["pytest"],
-    "lint": ["fourmat==0.2.0", "pre-commit==1.16.1"],
+    "lint": ["fourmat==0.2.0", "pre-commit~=1.18"],
 }
 EXTRAS_REQUIRE["dev"] = (
     EXTRAS_REQUIRE["tests"] + EXTRAS_REQUIRE["lint"] + ["tox"]
