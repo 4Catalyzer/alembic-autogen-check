@@ -2,10 +2,10 @@ import re
 
 from setuptools import setup
 
-INSTALL_REQUIRES = ["alembic", "click>=7.1.1"]
+INSTALL_REQUIRES = ["alembic", "click>=7.0"]
 EXTRAS_REQUIRE = {
     "tests": ["pytest"],
-    "lint": ["fourmat~=1.21.0", "pre-commit~=1.20"],
+    "lint": ["fourmat~=0.4.3", "pre-commit"],
 }
 EXTRAS_REQUIRE["dev"] = (
     EXTRAS_REQUIRE["tests"] + EXTRAS_REQUIRE["lint"] + ["tox"]
