@@ -1,5 +1,5 @@
 repos:
 - repo: https://github.com/4Catalyzer/fourmat
-  rev: master
+  rev: v0.4.3
   hooks:
     - id: fourmat
