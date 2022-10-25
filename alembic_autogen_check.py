@@ -47,7 +47,7 @@ def simulate_autogenerate(config_path: str) -> t.List[tuple]:
 )
 @click.pass_context
 def main(ctx: click.Context, config: str):
-    """Command to check that alembic mugrations are in sync with your SQLAlchemy models."""
+    """Command to check that alembic migrations are in sync with your SQLAlchemy models."""
     diff = simulate_autogenerate(config)
     if diff:
         click.secho(
