@@ -10,11 +10,11 @@ from alembic.operations.ops import MigrationScript
 __version__ = "1.1.1"
 
 
-def simulate_autogenerate(config_path: str) -> t.List[tuple]:
+def simulate_autogenerate(config_path: str, config_section_name: str) -> t.List[tuple]:
     """Simulate the `alembic revision --autogenerate` command
     and return a list of generated operations.
     """
-    config = Config(config_path)
+    config = Config(config_path, ini_section=config_section_name)
     revisions: t.List[MigrationScript] = []
 
     def process_revision_directives(context, revision, directives):
@@ -45,10 +45,17 @@ def simulate_autogenerate(config_path: str) -> t.List[tuple]:
     default="alembic.ini",
     help="Path to alembic.ini file.",
 )
+@click.option(
+    "-n",
+    "--name",
+    type=click.STRING,
+    default="alembic",
+    help="Name of section in .ini file to use for Alembic config",
+)
 @click.pass_context
-def main(ctx: click.Context, config: str):
+def main(ctx: click.Context, config: str, name: str):
     """Command to check that alembic migrations are in sync with your SQLAlchemy models."""
-    diff = simulate_autogenerate(config)
+    diff = simulate_autogenerate(config, name)
     if diff:
         click.secho(
             "ERROR: Migrations are out of sync with models. Diff:",
