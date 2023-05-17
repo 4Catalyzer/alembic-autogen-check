@@ -39,3 +39,15 @@ def test_out_of_sync_exits_with_error(run_command, monkeypatch):
     result = run_command(["--config", str(config_file)])
     assert result.exit_code == 1
     assert "ERROR: Migrations are out of sync with models." in result.output
+
+
+def test_in_sync_with_section_exists_with_success(run_command):
+    result = run_command(["--config", str(config_file), "--name", "in_sync"])
+    assert result.exit_code == 0
+    assert "INFO: Migrations in sync." in result.output
+
+
+def test_out_of_sync_with_section_exits_with_error(run_command):
+    result = run_command(["--config", str(config_file), "--name", "out_of_sync"])
+    assert result.exit_code == 1
+    assert "ERROR: Migrations are out of sync with models." in result.output
